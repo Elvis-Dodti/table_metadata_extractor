@@ -19,35 +19,50 @@ def metadata(df):
 def evaluate_get(path,types):
     for i in path:
 
-
-        if i == ".csv":
+     if i == ".csv":
             df = pd.read_csv(i)
             metadata(df)
-        elif i == ".xlsx":
+     elif i == ".xlsx":
             df = pd.read_excel(i)
             metadata(df)
-        elif i == ".tsv":
+     elif i == ".tsv":
             df = pd.read_excel(i)
             metadata(df)
 
-        else:
+     else:
             print("invalid")
+
+
+def get_path(rdf):
+    s_array = rdf[["FileName"]].to_numpy()
+    print(s_array)
+
+    t_array = rdf[["Path"]].to_numpy()
+    print(t_array)
+    return s_array, t_array
+
+
+def get_data():
+    rdf = pd.read_json("retrieved_data.json")
+    return rdf
+
 
 
 if __name__ == "__main__":
+        x = get_data()
+        fp,dt = get_path(x)
+        evaluate_get(fp, dt)
+        print(data)
 
-    listname = ["schemaData.csv", "osReports.xlsx.", "FileDetailReport.xlsx"]
-    for i in listname:
 
-        y = i.split(".")
-        if y[1] == "csv":
-            df = pd.read_csv(i)
-            metadata(df)
-        elif y[1] == "xlsx":
-            df = pd.read_excel(i)
-            metadata(df)
-        else:
-            print("invalid")
-    print(data)
+
+
+
+
+
+
+
+
+
 
 
