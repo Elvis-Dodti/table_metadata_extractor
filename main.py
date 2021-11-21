@@ -3,8 +3,9 @@ import numpy as np
 
 
 class MetaDataExtractor:  # class creation
-    def __init__(self):  # constructor
+    def __init__(self, filepath):  # constructor
         self.data = pd.DataFrame(columns=['rows', 'columns', 'nullvalues', 'fields', 'dataTypes'])
+        self.path = filepath
 
     @staticmethod
     def get_data(fn):
@@ -44,9 +45,13 @@ class MetaDataExtractor:  # class creation
         return path, filetype
 
     def runner(self):
-        ...
+        filedata = self.get_data(self.path)
+        fp, ft = self.get_path(filedata)
+        self.evaluate_get(fp, ft)
+
+        return self.data
 
 
 if __name__ == "__main__":
-    obj = MetaDataExtractor()
-    obj.runner()
+    obj = MetaDataExtractor("path/to/file")
+    required = obj.runner()
