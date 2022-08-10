@@ -1,3 +1,3 @@
-# table_metadata_extractor
+# Table metadata extractor
 
-Reads a json file and gives the basic details of the table.
+* Reads a json file and gives the basic details of the table.
